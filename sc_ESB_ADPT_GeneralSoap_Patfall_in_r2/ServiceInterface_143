@@ -1,0 +1,110 @@
+<emds.epi.decl.modell.ServiceInterface id="1">
+  <name>Patfall_Patient_query_in</name>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>143</ID>
+  <revisionNumber>1468327701930</revisionNumber>
+  <groupId>11</groupId>
+  <autoDeleteFlag>true</autoDeleteFlag>
+  <exchangePattern>REQUEST_RESPONSE</exchangePattern>
+  <parameters id="2">
+    <Property id="3">
+      <name>CLINIC</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="4">
+      <name>EVENT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="5">
+      <name>FILTER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="6">
+      <name>MAXRECORDS</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="7">
+      <name>MODE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="8">
+      <name>MSG_IN</name>
+      <type class="ArgumentType">message</type>
+      <messageType id="9">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:179</messageType>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="10">
+      <name>NAME</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="11">
+      <name>PID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="12">
+      <name>RECEIVER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="13">
+      <name>SENDER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="14">
+      <name>SENDMSGID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="15">
+      <name>STEP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="16">
+      <name>TIMESTAMP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="17">
+      <name>UUID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="18">
+      <name>MSG_OUT</name>
+      <type class="ArgumentType">message</type>
+      <messageType id="19">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:179</messageType>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="20">
+      <name>SERVICE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+  </parameters>
+  <importRevision>0</importRevision>
+</emds.epi.decl.modell.ServiceInterface>

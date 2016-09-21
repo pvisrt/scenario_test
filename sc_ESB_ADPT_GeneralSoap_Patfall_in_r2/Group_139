@@ -1,0 +1,9 @@
+<Group id="1">
+  <name>Messagetypes</name>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>139</ID>
+  <revisionNumber>1467269795825</revisionNumber>
+  <groupId>138</groupId>
+  <autoDeleteFlag>true</autoDeleteFlag>
+  <memberTypeName>MessageType</memberTypeName>
+</Group>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+  <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:emds="http://www.emds-ag.de/namespace/" xmlns:typens="urn:hirslanden:esb" targetNamespace="urn:hirslanden:esb" elementFormDefault="qualified">
+    <xsd:include schemaLocation="orch:d9c9a379-5c04-4aff-84b8-b8c774e81656:XMLSchema:191"></xsd:include>
+    <xsd:element ref="typens:Message" id="e1"></xsd:element>
+  </xsd:schema>

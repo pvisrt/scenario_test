@@ -1,0 +1,106 @@
+<emds.epi.decl.modell.ServiceProvider id="1">
+  <name>svc_ADPT_GeneralSoap_Patfall_in_r2</name>
+  <description>Specify the name and description of the element</description>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>130</ID>
+  <revisionNumber>1467278970956</revisionNumber>
+  <groupId>13</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <publicProviderName id="2">
+    <namespaceURI>urn:service</namespaceURI>
+    <localPart>svc_ADPT_GeneralSoap_Patfall_in_r2</localPart>
+    <prefix></prefix>
+  </publicProviderName>
+  <publicInterfaceName id="3">
+    <namespaceURI>urn:service</namespaceURI>
+    <localPart>svc_ADPT_GeneralSoap_Patfall_in_r2</localPart>
+    <prefix></prefix>
+  </publicInterfaceName>
+  <serviceMappings id="4">
+    <emds.epi.decl.modell.ServiceMapping id="5">
+      <technicalElement id="6">d9c9a379-5c04-4aff-84b8-b8c774e81656:ProcessModell:67</technicalElement>
+      <serviceInterface id="7">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:131</serviceInterface>
+      <requestAssignment id="8">
+        <Assignment id="9">
+          <targetPropertyName>MSG_IN</targetPropertyName>
+          <sourceExpr id="10">
+            <expression>MSG_IN</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </requestAssignment>
+      <responseAssignment id="11">
+        <Assignment id="12">
+          <targetPropertyName>MSG_OUT</targetPropertyName>
+          <sourceExpr id="13">
+            <expression>MSG_OUT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </responseAssignment>
+    </emds.epi.decl.modell.ServiceMapping>
+  </serviceMappings>
+  <authMethod>0</authMethod>
+  <isPublicService>false</isPublicService>
+  <allowWSDLWithoutSecurity>false</allowWSDLWithoutSecurity>
+  <subscriberImpl>false</subscriberImpl>
+  <categoryProcess>false</categoryProcess>
+  <supportedOperations id="14">
+    <emds.epi.decl.modell.Reference id="15">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:131</emds.epi.decl.modell.Reference>
+  </supportedOperations>
+  <bindings id="16">
+    <emds.epi.decl.service.Binding id="17">
+      <bindingType>SoapBinding</bindingType>
+      <bindings id="18">
+        <emds.epi.decl.service.MethodBinding id="19">
+          <originOperation id="20">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:131</originOperation>
+          <serviceOperation reference="20"/>
+          <protocollData class="emds.util.wsdl.SOAPMethodBinding" id="21">
+            <soapAction>Patfall_request</soapAction>
+            <style>document</style>
+            <input id="22">
+              <parts></parts>
+              <use>literal</use>
+              <encodingStyle>http://schemas.xmlsoap.org/soap/encoding/</encodingStyle>
+              <namespaceURI></namespaceURI>
+            </input>
+            <inputHeader id="23"/>
+            <output id="24">
+              <parts></parts>
+              <use>literal</use>
+              <encodingStyle>http://schemas.xmlsoap.org/soap/encoding/</encodingStyle>
+              <namespaceURI></namespaceURI>
+            </output>
+            <outputHeader id="25"/>
+            <useAttachments>false</useAttachments>
+          </protocollData>
+        </emds.epi.decl.service.MethodBinding>
+      </bindings>
+      <name id="26">
+        <namespaceURI>urn:service</namespaceURI>
+        <localPart>SoapBinding</localPart>
+        <prefix></prefix>
+      </name>
+      <bindingSpecific class="emds.util.wsdl.SOAPBinding" id="27">
+        <transport>http://schemas.xmlsoap.org/soap/http</transport>
+        <defaultStyle>document</defaultStyle>
+        <omitXMLHeader>false</omitXMLHeader>
+      </bindingSpecific>
+    </emds.epi.decl.service.Binding>
+  </bindings>
+  <ports id="28">
+    <emds.epi.decl.service.PortImpl id="29">
+      <portName>Port_Patfall_request</portName>
+      <endpointImpl class="emds.epi.decl.service.HttpEndpointImpl" id="30">
+        <supportedTypes id="31">
+          <emds.util.wsdl.BindingType>SoapBinding</emds.util.wsdl.BindingType>
+        </supportedTypes>
+        <roles id="32"/>
+        <authMethod>0</authMethod>
+        <wantSecurePort>false</wantSecurePort>
+        <overwriteBasePath>false</overwriteBasePath>
+      </endpointImpl>
+      <binding reference="17"/>
+    </emds.epi.decl.service.PortImpl>
+  </ports>
+</emds.epi.decl.modell.ServiceProvider>

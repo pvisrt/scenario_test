@@ -1,0 +1,212 @@
+<emds.epi.decl.modell.ServiceInterface id="1">
+  <name>sig_ADPT_in_Status</name>
+  <description>scenario element imported from scLib_ESB_Development</description>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>160</ID>
+  <revisionNumber>1470316887220</revisionNumber>
+  <groupId>11</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <exchangePattern>NOTIFY</exchangePattern>
+  <parameters id="2">
+    <Property id="3">
+      <name>ORCMSGID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>OrchestraMessage-ID der Input-Message</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="4">
+      <name>UUID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Eindeutige interne Transaktionsnummer</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="5">
+      <name>SENDMSGID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Message-ID des sendenden Systems</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="6">
+      <name>OBJECT_ID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>ID des Objekts (z.B. Wert der PID)</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="7">
+      <name>OBJECT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Bezeichnung des Objekts (z.B. Patfall.Patient)</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="8">
+      <name>SENDER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Sendendes System</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="9">
+      <name>RECEIVER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Zielsystem(e)</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="10">
+      <name>CLINIC</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Klinik-Nummer</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="11">
+      <name>TIMESTAMP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Zeitpunkt der eintreffenden Daten</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="12">
+      <name>SENDER_FAC</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Klinik, Standort</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="13">
+      <name>RECEIVER_FAC</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Hirslanden Corporate Office</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="14">
+      <name>MANDANT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>SAP Mandant</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="15">
+      <name>FORMAT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Format der Daten</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="16">
+      <name>LANGUAGE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Sprache</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="17">
+      <name>SERVICE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Verwendeter Service inkl. Version</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="18">
+      <name>STATUS_CODE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Code für Verarbeitungsstatus, z.B. OK</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="19">
+      <name>STATUS_TXT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Text für Verarbeitungsstatus</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="20">
+      <name>RETRIES</name>
+      <type class="SimpleType">int</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Anzahl Wiederholversuche</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="21">
+      <name>OBJECT_KEY1</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Parametername des Objekts</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="22">
+      <name>OBJECT_VAL1</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Parameterwert des Objekts</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="23">
+      <name>EVENT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Ereignis/Typ</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="24">
+      <name>STEP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Verarbeitungsschritt (z.B. INIT,ANGE,FAIL)</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="25">
+      <name>SYSTEM</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="26">
+      <name>SCENARIO</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="27">
+      <name>PROCESS</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="28">
+      <name>LOGTIME</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Notification-Zeitpunkt</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="29">
+      <name>DETAILS</name>
+      <type class="ArgumentType">message</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Infos zu Einzeldatensätzen in Transaction-Bundles</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="30">
+      <name>MSGFILEPATH</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>UNC-Pfad auf Message-Archivdatei</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+  </parameters>
+  <publicInterfaceName id="31">
+    <namespaceURI>urn:service:signal</namespaceURI>
+    <localPart>sig_ADPT_in_Status</localPart>
+    <prefix></prefix>
+  </publicInterfaceName>
+  <importSource id="32">8a8fc2b2-1528-44a9-a565-280a42e5d9c3:ServiceInterface:195</importSource>
+  <importRevision>1467882075675</importRevision>
+</emds.epi.decl.modell.ServiceInterface>

@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:tns="urn:hirslanden:esb" 
+			xmlns:dataTypes="urn:hirslanden:esb" 
+			targetNamespace="urn:hirslanden:esb" 			
+			elementFormDefault="qualified"
+			version="2.3">	<!-- created: 2016-09-06 by HLE  (version/created immer anpassen!!) -->  
+
+	<!-- DataTypes-Schema -->
+	<xs:include schemaLocation="Patfall_DataTypes_v2.xsd"/>
+
+	<xs:complexType name="Patient">
+		<xs:annotation>
+			<xs:documentation>
+				Patient Version 2.0,
+				ESB Patient-Struktur für  Patfall Service-Gruppe
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Patient_ID" type="tns:Patient_ID" minOccurs="1" maxOccurs="unbounded">
+			</xs:element>
+			<xs:element name="hatDubletten" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Kennzeichen, dass es mindestens einen Dubletten-Datensatz für den Patienten gibt (in Patient_ID gekennzeichnet)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Patient_Name" type="dataTypes:Patfall_PersonName" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Namen des Patienten
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="geschlecht" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code Geschlecht
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="geburtsdatum" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Geburtsdatum
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="geburtsort" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Geburtsort
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="geburtsland" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code Land
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="anrede" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code Anrede
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="titel" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code Titel
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Patient_Adresse" type="dataTypes:Patfall_Adresse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Adressen des Patienten
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Patient_Telekommunikation" type="dataTypes:Patfall_Telekommunikation" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Erreichbarkeit des Patienten (Telefon und E-Mail, ggf. weitere)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="staatsangehoerigkeit" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code Staatsangehoerigkeit
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="zivilstand" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code Familienstand
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="konfession" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code Religion
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="sprechsprache" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für gesprochene Sprache
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="korrespondenzsprache" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Korrespondenzsprache
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="beruf" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						ausgeübter Beruf
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="anonymitaetFlag" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Flag für Anonymität
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="vipFlag" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Flag für VIP-Status
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="todeszeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Todesdatum und -zeit, wenn verstorben
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Patient_Kontakt" type="tns:Patient_Kontakt" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Kontaktpersonen des Patienten
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Patient_Arbeitgeber" type="tns:Patient_Arbeitgeber" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Arbeitgeber des Patienten
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Patient_Garant" type="tns:Patient_Garant" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Garanten des Patienten
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Patient_Zusatzinfo" type="dataTypes:Patfall_Zusatzinfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Zusatzinformationen zum Patient
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patient_ID">
+		<xs:annotation>
+			<xs:documentation>
+				Patienten-ID Angaben für ein spezifisches Umsystem bzw. eine Domäne (z.B. MPI, SAP, AHV-Nr., Versicherungskarten-Nr, ...)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="patientId" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Patient ID im Umsystem
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="systemName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						System Kenner
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="schema" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Kodierschema/Nummernkreis
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="istDublette" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Markierung für Dubletten-ID
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patient_Kontakt">
+		<xs:annotation>
+			<xs:documentation>
+				Kontakte zum Patienten mit spezieller Rolle (z.B. Angehöriger, gesetzl. Vertreter, ...) und Verwendschaftsverhältnis (z.B. Mutter, Vater, ...)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kontaktRolle" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Rolle (Angehöriger, Gesetzlicher Vertreter, andere)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="verwandschaftsverhaeltnis" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Verwandtschaftsverhältnis
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Kontakt_Name" type="dataTypes:Patfall_PersonName" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Namen des Kontaktes
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="kontaktAnrede" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Anrede
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="kontaktTitel" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Titel
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Kontakt_Adresse" type="dataTypes:Patfall_Adresse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Adressen des Kontaktes
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Kontakt_Telekommunikation" type="dataTypes:Patfall_Telekommunikation" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Erreichbarkeit des Kontaktes (Telefon und E-Mail, ggf. weitere)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="kontaktBemerkung" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Bemerkung zum Kontakt
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patient_Arbeitgeber">
+		<xs:annotation>
+			<xs:documentation>
+				Arbeitgeber eines Patienten
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Firmenname
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="betriebsnummer" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						BFS Betriebsnummer
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bemerkung" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						weitere Bemerkungen
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Arbeitgeber_ID" type="dataTypes:Patfall_Identifier" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						ID eines Arbeitgebers aus dem Umsystem
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Arbeitgeber_Adresse" type="dataTypes:Patfall_Adresse" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Adressen des Arbeitgebers
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Arbeitgeber_Telekommunikation" type="dataTypes:Patfall_Telekommunikation" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Erreichbarkeit des Arbeitgebers (Telefon und E-Mail, ggf. weitere)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patient_Garant">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Name des Garanten
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bemerkung" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						weitere Bemerkungen
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Garant_ID" type="dataTypes:Patfall_Identifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						ID eines Garanten aus dem Umsystem
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Garant_Adresse" type="dataTypes:Patfall_Adresse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Adressen des Garanten
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Garant_Telekommunikation" type="dataTypes:Patfall_Telekommunikation" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Erreichbarkeit des Garanten (Telefon und E-Mail, ggf. weitere)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patient_Query">
+		<xs:annotation>
+			<xs:documentation>
+				Patient_Query Version 2.0,
+				ESB PatientQuery-Struktur für  Patientensuche
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="QueryRequest" type="tns:Patient_QueryRequest" minOccurs="1" maxOccurs="1">
+			</xs:element>
+			<xs:element name="QueryResponse" type="tns:Patient_QueryResponse" minOccurs="1" maxOccurs="1">
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patient_QueryRequest">
+		<xs:annotation>
+			<xs:documentation>
+				Request-Parameter für Patientensuche
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RequestParameter" type="tns:Patient_RequestParameter" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Parameter für Suchanfrage
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="mindestQualitaet" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Schwellwert für Ergebnisqualität
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="suchAlgorithmus" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Algorithmus für die Patientensuche
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="maximaleTreffer" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						maximale Anzahl von Patientendatensätzen in der Response
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patient_RequestParameter">
+		<xs:annotation>
+			<xs:documentation>
+				Set an Request-Feldern für Patientensuche
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="bezeichnung" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Parameter-Bezeichnung (z.B. Nachname)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="pfad" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Pfad des Suchfeldes (vereinfachter relativer XPath ohne Namespace)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="wert" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Wert/Maske des Suchfeldes
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patient_QueryResponse">
+		<xs:annotation>
+			<xs:documentation>
+				Response zur Patientensuche
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="anzahlTrefferGeliefert" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Anzahl von zurückgegebenen Datensätzen
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="anzahlTrefferVorhanden" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Anzahl von gefundenen Datensätzen im angefragten System
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="anzahlTrefferAusstehend" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Anzahl von noch nicht gelieferten Datensätzen aus angefragtem System
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="mehrVorhandenAb" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Kennzeichen oder Pointer für weitere, noch nicht zurückgegebene Datensätze (in HL7-PDQ ContinuationPointer)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Treffer" type="tns:Patient_ResponseTreffer" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Treffer-Datensätze
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patient_ResponseTreffer">
+		<xs:annotation>
+			<xs:documentation>
+				Treffer-Datensatz für Patientensuche
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="trefferQualitaet" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Matching-Qualität auf Suchparameter
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Patient" type="tns:Patient" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Treffer-Patientendatensatz
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Treffer_Zusatzinfo" type="dataTypes:Patfall_Zusatzinfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Zusätzliche Informationen zum Treffer-Datensatz
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>  3{8a8fc2b2-1528-44a9-a565-280a42e5d9c3:XMLSchema}294  V����

@@ -1,0 +1,67 @@
+<emds.epi.decl.modell.ServiceDeclaration id="1">
+  <name>svc_INTG_Patfall_Patient_get_v2_in_r1_svc_INTG_Patfall_Patient_get_v2_in_r1</name>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>258</ID>
+  <revisionNumber>1468253107231</revisionNumber>
+  <groupId>254</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <supportedOperations id="2">
+    <emds.epi.decl.modell.Reference id="3">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:259</emds.epi.decl.modell.Reference>
+    <emds.epi.decl.modell.Reference id="4">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:276</emds.epi.decl.modell.Reference>
+  </supportedOperations>
+  <bindings id="5">
+    <emds.epi.decl.service.Binding id="6">
+      <bindingType>OrchestraService</bindingType>
+      <bindings id="7">
+        <emds.epi.decl.service.MethodBinding id="8">
+          <originOperation id="9">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:259</originOperation>
+          <serviceOperation reference="9"/>
+          <protocollData class="emds.util.wsdl.OrchestraMethodBinding" id="10">
+            <namespace></namespace>
+            <name>Patfall_Patient_get_in</name>
+          </protocollData>
+        </emds.epi.decl.service.MethodBinding>
+        <emds.epi.decl.service.MethodBinding id="11">
+          <originOperation id="12">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:276</originOperation>
+          <serviceOperation reference="12"/>
+          <protocollData class="emds.util.wsdl.OrchestraMethodBinding" id="13">
+            <namespace></namespace>
+            <name>Patfall_Patient_get_in_HL7v25</name>
+          </protocollData>
+        </emds.epi.decl.service.MethodBinding>
+      </bindings>
+      <name id="14">
+        <namespaceURI>urn:service</namespaceURI>
+        <localPart>OrchestraService</localPart>
+        <prefix></prefix>
+      </name>
+      <description>Imported from wsdl</description>
+    </emds.epi.decl.service.Binding>
+  </bindings>
+  <ports id="15">
+    <emds.epi.decl.service.Port id="16">
+      <name>ORC</name>
+      <endpoint class="emds.epi.decl.service.OrchestraEndpoint" id="17">
+        <supportedTypes id="18">
+          <emds.util.wsdl.BindingType>OrchestraService</emds.util.wsdl.BindingType>
+        </supportedTypes>
+        <serviceName id="19">
+          <namespaceURI>urn:service</namespaceURI>
+          <localPart>svc_INTG_Patfall_Patient_get_v2_in_r1</localPart>
+          <prefix></prefix>
+        </serviceName>
+      </endpoint>
+      <binding reference="6"/>
+    </emds.epi.decl.service.Port>
+  </ports>
+  <schemas id="20">
+    <emds.epi.decl.modell.Reference id="21">d9c9a379-5c04-4aff-84b8-b8c774e81656:XMLSchema:257</emds.epi.decl.modell.Reference>
+  </schemas>
+  <publicInterfaceName id="22">
+    <namespaceURI>urn:service</namespaceURI>
+    <localPart>svc_INTG_Patfall_Patient_get_v2_in_r1</localPart>
+    <prefix></prefix>
+  </publicInterfaceName>
+  <isSubscriber>false</isSubscriber>
+  <importSource>file:/G:/Entwicklung_hle/Scenario-Entwicklung/ESB/Nextgeneration/ServiceGruppen/Patfall/WSDL/Patfall_v2/svc_INTG_Patfall_Patient_get_v2_in_r1.wsdl</importSource>
+</emds.epi.decl.modell.ServiceDeclaration>

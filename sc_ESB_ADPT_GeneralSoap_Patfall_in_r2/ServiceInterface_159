@@ -1,0 +1,166 @@
+<emds.epi.decl.modell.ServiceInterface id="1">
+  <name>sig_ESB_ERROR</name>
+  <description>Imported from scLib_ESB_Development, element sig_ESB_ERROR</description>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>159</ID>
+  <revisionNumber>1467269795903</revisionNumber>
+  <groupId>11</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <exchangePattern>NOTIFY</exchangePattern>
+  <parameters id="2">
+    <Property id="3">
+      <name>ERROR</name>
+      <type class="ComplexType" id="4">error</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Fehlerobjekt</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="5">
+      <name>MELDUNG_AN</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Email-Gruppe gemäss HI-Custom-DB</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="6">
+      <name>SENDER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Bezeichnung des Sender-Systems</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="7">
+      <name>CURMSG</name>
+      <type class="ArgumentType">message</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Fehler verursachende Nachricht</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="8">
+      <name>OBJECT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Name des fachlichen Objekts</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="9">
+      <name>OBJECT_ID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>ID des fachlichen Objekts</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="10">
+      <name>TIMESTAMP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Zeitpunkt der Initial-Message</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="11">
+      <name>UUID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Eindeutige ID innerhalb Orchestra</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="12">
+      <name>SCENARIO</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Scenario Name (wenn kein ErrContext)</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="13">
+      <name>PROCESS</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Process Name (wenn kein ErrContext)</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="14">
+      <name>LOGTIME</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Zeitpunkt des Fehlers</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="15">
+      <name>SERVICE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Fachliche Service-Operation</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="16">
+      <name>COMMENT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Bemerkungen</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="17">
+      <name>SYSTEM</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>System (wenn Fehler im Adapter)</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="18">
+      <name>STEP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Verarbeitungsschritt (z.B. INIT,ANGE,FAIL)</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="19">
+      <name>SENDER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Sendendes System</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="20">
+      <name>RECEIVER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Zielsystem(e)</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="21">
+      <name>SENDMSGID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Message-ID des sendenden Systems</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="22">
+      <name>CLINIC</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Klinik-Nummer</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="23">
+      <name>STATUS_CODE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>ERROR</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="24">
+      <name>STATUS_TXT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Text für Verarbeitungsstatus</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+  </parameters>
+  <publicInterfaceName id="25">
+    <namespaceURI>urn:service:signal</namespaceURI>
+    <localPart>sig_ESB_ERROR</localPart>
+    <prefix></prefix>
+  </publicInterfaceName>
+  <importSource id="26">8a8fc2b2-1528-44a9-a565-280a42e5d9c3:ServiceInterface:199</importSource>
+  <importRevision>1447068320299</importRevision>
+</emds.epi.decl.modell.ServiceInterface>

@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:tns="urn:hirslanden:esb" 
+			xmlns:dataTypes="urn:hirslanden:esb" 
+			targetNamespace="urn:hirslanden:esb" 			
+			elementFormDefault="qualified"
+			version="2.0">	<!-- created: 2016-06-27 by HLE  (version/created immer anpassen!!) -->  
+
+	<xs:complexType name="Patfall_Telekommunikation">
+		<xs:annotation>
+			<xs:documentation>
+				Angaben zu einem Telekommunikationstyp, z.B. Telefon, E-Mail, Fax, Account in sozialem Netzwerk (jeweils Unterscheidung auch nach privat, dienstlich, ...)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="telTyp" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code Telekommunikationstyp
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="telNummerAdresse" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Telefonnummer oder E-Mail-Adresse
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="telGueltigVonZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+			</xs:element>
+			<xs:element name="telGueltigBisZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patfall_Adresse">
+		<xs:annotation>
+			<xs:documentation>
+				Adresse/Anschrift einer Person oder Institution
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="adresstyp" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Adresstyp
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="strasse" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Strasse und Hausnummer
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="adressZusatz" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Zusatz zur Adresse (z.B. Etage, weitere)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="postfach" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Postfach
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="land" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Landescode
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="postleitzahl" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Postleitzahl (in CH immer 4, in DE immer 5)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="ort" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Ortschaft
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="kanton" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code Kanton
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patfall_PersonName">
+		<xs:annotation>
+			<xs:documentation>
+				Namensangaben einer Person
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="nachname" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Familienname
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="vorname" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Vorname
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="nameCode" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Nutzungskode (z.B. AL für allgemeiner Name, ZN für Zweitname oder zusätzlicher Name, GB für Geburtsname)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patfall_Identifier">
+		<xs:annotation>
+			<xs:documentation>
+				Identifier einer Entität in einem speziellen System bzw. einer Domäne
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identifier" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Identifier im System oder in einer Domäne
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="systemName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Name des Systems oder der Domäne
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="schema" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Kodierschema/Nummernkreis
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patfall_Arztzuordnung">
+		<xs:annotation>
+			<xs:documentation>
+				Daten zum beteiligten Arzt
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="orgEinheit" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Organisationseinheit
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="arztID" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Hirslanden ID des Arztes
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="arztEAN" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						EAN Nummer des Arztes
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="rolle" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Rolle des Arztes in der Zuordnung
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patfall_Lokation">
+		<xs:annotation>
+			<xs:documentation>
+				Daten zur Lokation in Klinik
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="lokationsTyp" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Lokationstyp
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="einrichtung" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Kliniknummer
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="OrgEinheitFachlich_ID" type="dataTypes:Patfall_Identifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Fachliche Organisationseinheit
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="OrgEinheitPflegerisch_ID" type="dataTypes:Patfall_Identifier" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Pflegerische Organisationseinheit
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="zimmer" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Zimmer
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bett" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Bettplatz
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bettTelefon" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Telefon am Patientenbett
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="gueltigVonZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						ab wann gültig
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="gueltigBisZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						bis wann gültig
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patfall_Zusatzinfo">
+		<xs:annotation>
+			<xs:documentation>
+				Zusatzinformationen zu einer Entität
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="bezeichnung" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Bezeichnung (Name) des Parameters
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="wertCode" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						kodierter Wert des Parameters
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="wertText" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Textwert des Parameters
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Patfall_Versichertenkarte">
+		<xs:annotation>
+			<xs:documentation>
+				Administrative Informationen der Versichertenkarte
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kartenNummer" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Nummer der Karte
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="gueltigBisZeitpunkt" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Gültigkeitsdatum der Karte
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="einleseZeitpunkt" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Datum/Zeit der eingelesenen Kartendaten
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bestaetigungsZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Datum/Zeit der Online-Bestätigung
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bestaetigungsId" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						ID der Online-Bestätigung
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bestaetigungsServer" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Servername der Online-Bestätigung
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>  3{8a8fc2b2-1528-44a9-a565-280a42e5d9c3:XMLSchema}293  U���H

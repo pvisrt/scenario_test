@@ -1,0 +1,2432 @@
+<ProcessModel id="1">
+  <name>apm_GeneralSoap_Patient_in</name>
+  <description></description>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>236</ID>
+  <revisionNumber>1468327742671</revisionNumber>
+  <groupId>5</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <isPersistent>false</isPersistent>
+  <useRecovery>false</useRecovery>
+  <isMassData>false</isMassData>
+  <isFifo>false</isFifo>
+  <ensureEventFifo>false</ensureEventFifo>
+  <priority>NORMAL</priority>
+  <priorityDerived>false</priorityDerived>
+  <logLevel>0</logLevel>
+  <deleteLog>false</deleteLog>
+  <redeployPolicy>1</redeployPolicy>
+  <volatilePoicy>0</volatilePoicy>
+  <manualRestart>true</manualRestart>
+  <transactionSpec id="2">
+    <transactionType>STANDARD</transactionType>
+    <demarcation>0</demarcation>
+    <timeout>0</timeout>
+  </transactionSpec>
+  <processTyp>0</processTyp>
+  <clusterMode>0</clusterMode>
+  <businessKeys id="3">
+    <Property id="4">
+      <name>UUID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="5">
+      <name>SENDMSGID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="6">
+      <name>PID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="7">
+      <name>NAME</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="8">
+      <name>SENDER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="9">
+      <name>RECEIVER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="10">
+      <name>CLINIC</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="11">
+      <name>operation</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Aufzurufende Object_operation</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="12">
+      <name>EVENT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="13">
+      <name>STEP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="14">
+      <name>FID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+  </businessKeys>
+  <processObjects id="15">
+    <EventEnd id="16">
+      <processModel reference="1"/>
+      <id>107</id>
+      <displayText>end</displayText>
+      <inAssignments id="17"/>
+      <outAssignments id="18"/>
+      <xpos>60.0</xpos>
+      <ypos>940.0</ypos>
+      <width>20.0</width>
+      <height>20.0</height>
+    </EventEnd>
+    <GatewayExclusiveDecision id="19">
+      <processModel reference="1"/>
+      <id>111</id>
+      <displayText>xor</displayText>
+      <inAssignments id="20"/>
+      <outAssignments id="21"/>
+      <xpos>50.0</xpos>
+      <ypos>200.0</ypos>
+      <width>40.0</width>
+      <height>40.0</height>
+      <namespaceContext id="22"/>
+    </GatewayExclusiveDecision>
+    <GatewayExclusiveMerge id="23">
+      <processModel reference="1"/>
+      <id>112</id>
+      <displayText>xor join</displayText>
+      <inAssignments id="24"/>
+      <outAssignments id="25"/>
+      <xpos>50.0</xpos>
+      <ypos>850.0</ypos>
+      <width>40.0</width>
+      <height>40.0</height>
+    </GatewayExclusiveMerge>
+    <emds.epi.decl.modell.process.ESB__Call id="26">
+      <processModel reference="1"/>
+      <id>169</id>
+      <displayText>service-call</displayText>
+      <inAssignments id="27">
+        <Assignment id="28">
+          <targetPropertyName>SENDMSGID</targetPropertyName>
+          <sourceExpr id="29">
+            <expression>SENDMSGID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="30">
+          <targetPropertyName>SENDER</targetPropertyName>
+          <sourceExpr id="31">
+            <expression>SENDER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="32">
+          <targetPropertyName>MODE</targetPropertyName>
+          <sourceExpr id="33">
+            <expression>MODE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="34">
+          <targetPropertyName>PID</targetPropertyName>
+          <sourceExpr id="35">
+            <expression>PID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="36">
+          <targetPropertyName>STEP</targetPropertyName>
+          <sourceExpr id="37">
+            <expression>STEP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="38">
+          <targetPropertyName>CLINIC</targetPropertyName>
+          <sourceExpr id="39">
+            <expression>CLINIC</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="40">
+          <targetPropertyName>EVENT</targetPropertyName>
+          <sourceExpr id="41">
+            <expression>EVENT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="42">
+          <targetPropertyName>NAME</targetPropertyName>
+          <sourceExpr id="43">
+            <expression>NAME</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="44">
+          <targetPropertyName>TIMESTAMP</targetPropertyName>
+          <sourceExpr id="45">
+            <expression>TIMESTAMP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="46">
+          <targetPropertyName>MSG_IN</targetPropertyName>
+          <sourceExpr id="47">
+            <expression>(Message)MSG_IN.makePersistent()</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="48">
+          <targetPropertyName>UUID</targetPropertyName>
+          <sourceExpr id="49">
+            <expression>UUID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="50">
+          <targetPropertyName>RECEIVER</targetPropertyName>
+          <sourceExpr id="51">
+            <expression>RECEIVER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </inAssignments>
+      <outAssignments id="52">
+        <Assignment id="53">
+          <targetPropertyName>MSG_OUT</targetPropertyName>
+          <sourceExpr id="54">
+            <expression>MSG_OUT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="55">
+          <targetPropertyName>SERVICE</targetPropertyName>
+          <sourceExpr id="56">
+            <expression>SERVICE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </outAssignments>
+      <xpos>240.0</xpos>
+      <ypos>420.0</ypos>
+      <width>100.0</width>
+      <height>40.0</height>
+      <namespaceContext id="57"/>
+      <intermediateEvents id="58"/>
+      <transactionMode>ACTIVITY_USE_ACTIVE_OR_ATTACH</transactionMode>
+      <retryCount>5</retryCount>
+      <retryDelay id="59">
+        <unit>SECOND</unit>
+        <value>30</value>
+      </retryDelay>
+      <userDefined>false</userDefined>
+      <messageSizeStrategy>0</messageSizeStrategy>
+      <serviceDeclaration id="60">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:125</serviceDeclaration>
+      <serviceOperation id="61">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:126</serviceOperation>
+      <parameters id="62">
+        <Property id="63">
+          <name>CLINIC</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="64">
+          <name>EVENT</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="65">
+          <name>FORCE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="66">
+          <name>MODE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="67">
+          <name>MSG_IN</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="68">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:178</messageType>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="69">
+          <name>NAME</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="70">
+          <name>PID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="71">
+          <name>RECEIVER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="72">
+          <name>SENDER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="73">
+          <name>SENDMSGID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="74">
+          <name>STEP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="75">
+          <name>TIMESTAMP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="76">
+          <name>UUID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="77">
+          <name>MSG_OUT</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="78">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:178</messageType>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="79">
+          <name>SERVICE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+      </parameters>
+      <roleProvider>true</roleProvider>
+      <port>ORC</port>
+      <isDynamicMode>false</isDynamicMode>
+    </emds.epi.decl.modell.process.ESB__Call>
+    <EventStart id="80">
+      <processModel reference="1"/>
+      <id>243</id>
+      <displayText>start</displayText>
+      <inAssignments id="81"/>
+      <outAssignments id="82"/>
+      <xpos>60.0</xpos>
+      <ypos>40.0</ypos>
+      <width>20.0</width>
+      <height>20.0</height>
+    </EventStart>
+    <emds.epi.decl.modell.process.ESB__Call id="83">
+      <processModel reference="1"/>
+      <id>261</id>
+      <displayText>service-call</displayText>
+      <inAssignments id="84">
+        <Assignment id="85">
+          <targetPropertyName>SENDMSGID</targetPropertyName>
+          <sourceExpr id="86">
+            <expression>SENDMSGID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="87">
+          <targetPropertyName>FILTER</targetPropertyName>
+          <sourceExpr id="88">
+            <expression>getGlobalVariable(&quot;ee_PatientQueryResultFilter&quot;)</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="89">
+          <targetPropertyName>SENDER</targetPropertyName>
+          <sourceExpr id="90">
+            <expression>SENDER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="91">
+          <targetPropertyName>MODE</targetPropertyName>
+          <sourceExpr id="92">
+            <expression>MODE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="93">
+          <targetPropertyName>STEP</targetPropertyName>
+          <sourceExpr id="94">
+            <expression>STEP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="95">
+          <targetPropertyName>PID</targetPropertyName>
+          <sourceExpr id="96">
+            <expression>PID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="97">
+          <targetPropertyName>CLINIC</targetPropertyName>
+          <sourceExpr id="98">
+            <expression>CLINIC</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="99">
+          <targetPropertyName>EVENT</targetPropertyName>
+          <sourceExpr id="100">
+            <expression>EVENT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="101">
+          <targetPropertyName>NAME</targetPropertyName>
+          <sourceExpr id="102">
+            <expression>NAME</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="103">
+          <targetPropertyName>MAXRECORDS</targetPropertyName>
+          <sourceExpr id="104">
+            <expression>&quot;30&quot;</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="105">
+          <targetPropertyName>TIMESTAMP</targetPropertyName>
+          <sourceExpr id="106">
+            <expression>TIMESTAMP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="107">
+          <targetPropertyName>MSG_IN</targetPropertyName>
+          <sourceExpr id="108">
+            <expression>(Message)MSG_IN.makePersistent()</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="109">
+          <targetPropertyName>UUID</targetPropertyName>
+          <sourceExpr id="110">
+            <expression>UUID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="111">
+          <targetPropertyName>RECEIVER</targetPropertyName>
+          <sourceExpr id="112">
+            <expression>RECEIVER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </inAssignments>
+      <outAssignments id="113">
+        <Assignment id="114">
+          <targetPropertyName>MSG_OUT</targetPropertyName>
+          <sourceExpr id="115">
+            <expression>MSG_OUT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="116">
+          <targetPropertyName>SERVICE</targetPropertyName>
+          <sourceExpr id="117">
+            <expression>SERVICE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </outAssignments>
+      <xpos>90.0</xpos>
+      <ypos>260.0</ypos>
+      <width>100.0</width>
+      <height>40.0</height>
+      <namespaceContext id="118"/>
+      <intermediateEvents id="119"/>
+      <transactionMode>ACTIVITY_USE_ACTIVE_OR_ATTACH</transactionMode>
+      <retryCount>5</retryCount>
+      <retryDelay id="120">
+        <unit>SECOND</unit>
+        <value>30</value>
+      </retryDelay>
+      <userDefined>false</userDefined>
+      <messageSizeStrategy>0</messageSizeStrategy>
+      <serviceDeclaration id="121">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:142</serviceDeclaration>
+      <serviceOperation id="122">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:143</serviceOperation>
+      <parameters id="123">
+        <Property id="124">
+          <name>CLINIC</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="125">
+          <name>EVENT</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="126">
+          <name>FILTER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="127">
+          <name>MAXRECORDS</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="128">
+          <name>MODE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="129">
+          <name>MSG_IN</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="130">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:179</messageType>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="131">
+          <name>NAME</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="132">
+          <name>PID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="133">
+          <name>RECEIVER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="134">
+          <name>SENDER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="135">
+          <name>SENDMSGID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="136">
+          <name>STEP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="137">
+          <name>TIMESTAMP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="138">
+          <name>UUID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="139">
+          <name>MSG_OUT</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="140">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:179</messageType>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="141">
+          <name>SERVICE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+      </parameters>
+      <roleProvider>true</roleProvider>
+      <port>Port_ORC</port>
+      <isDynamicMode>false</isDynamicMode>
+    </emds.epi.decl.modell.process.ESB__Call>
+    <ExternalSystem id="142">
+      <processModel reference="1"/>
+      <id>268</id>
+      <displayText>svc_INTG_Patfall_Patient_query_v2_in_r1_svc_INTG_Patfall_Patient_query_v2_in_r1</displayText>
+      <inAssignments id="143"/>
+      <outAssignments id="144"/>
+      <xpos>960.0</xpos>
+      <ypos>260.0</ypos>
+      <width>460.0</width>
+      <height>40.0</height>
+      <channelRef id="145">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:142</channelRef>
+      <isInbound>true</isInbound>
+      <isOutbound>true</isOutbound>
+      <role>ServiceEndpoint</role>
+    </ExternalSystem>
+    <emds.epi.decl.modell.process.ESB__Call id="146">
+      <processModel reference="1"/>
+      <id>271</id>
+      <displayText>service-call</displayText>
+      <inAssignments id="147">
+        <Assignment id="148">
+          <targetPropertyName>SENDMSGID</targetPropertyName>
+          <sourceExpr id="149">
+            <expression>SENDMSGID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="150">
+          <targetPropertyName>SENDER</targetPropertyName>
+          <sourceExpr id="151">
+            <expression>SENDER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="152">
+          <targetPropertyName>MODE</targetPropertyName>
+          <sourceExpr id="153">
+            <expression>MODE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="154">
+          <targetPropertyName>TIMESTAMP</targetPropertyName>
+          <sourceExpr id="155">
+            <expression>TIMESTAMP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="156">
+          <targetPropertyName>PID</targetPropertyName>
+          <sourceExpr id="157">
+            <expression>PID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="158">
+          <targetPropertyName>STEP</targetPropertyName>
+          <sourceExpr id="159">
+            <expression>STEP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="160">
+          <targetPropertyName>MSG_IN</targetPropertyName>
+          <sourceExpr id="161">
+            <expression>(Message)MSG_IN.makePersistent()</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="162">
+          <targetPropertyName>UUID</targetPropertyName>
+          <sourceExpr id="163">
+            <expression>UUID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="164">
+          <targetPropertyName>CLINIC</targetPropertyName>
+          <sourceExpr id="165">
+            <expression>CLINIC</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="166">
+          <targetPropertyName>EVENT</targetPropertyName>
+          <sourceExpr id="167">
+            <expression>EVENT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="168">
+          <targetPropertyName>RECEIVER</targetPropertyName>
+          <sourceExpr id="169">
+            <expression>RECEIVER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="170">
+          <targetPropertyName>NAME</targetPropertyName>
+          <sourceExpr id="171">
+            <expression>NAME</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </inAssignments>
+      <outAssignments id="172">
+        <Assignment id="173">
+          <targetPropertyName>MSG_OUT</targetPropertyName>
+          <sourceExpr id="174">
+            <expression>MSG_OUT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="175">
+          <targetPropertyName>SERVICE</targetPropertyName>
+          <sourceExpr id="176">
+            <expression>SERVICE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </outAssignments>
+      <xpos>310.0</xpos>
+      <ypos>490.0</ypos>
+      <width>100.0</width>
+      <height>40.0</height>
+      <namespaceContext id="177"/>
+      <intermediateEvents id="178"/>
+      <transactionMode>ACTIVITY_USE_ACTIVE_OR_ATTACH</transactionMode>
+      <retryCount>5</retryCount>
+      <retryDelay id="179">
+        <unit>SECOND</unit>
+        <value>30</value>
+      </retryDelay>
+      <userDefined>false</userDefined>
+      <messageSizeStrategy>0</messageSizeStrategy>
+      <serviceDeclaration id="180">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:184</serviceDeclaration>
+      <serviceOperation id="181">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:185</serviceOperation>
+      <parameters id="182">
+        <Property id="183">
+          <name>CLINIC</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="184">
+          <name>EVENT</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="185">
+          <name>MODE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="186">
+          <name>MSG_IN</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="187">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:186</messageType>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="188">
+          <name>NAME</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="189">
+          <name>PID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="190">
+          <name>RECEIVER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="191">
+          <name>SENDER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="192">
+          <name>SENDMSGID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="193">
+          <name>STEP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="194">
+          <name>TIMESTAMP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="195">
+          <name>UUID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="196">
+          <name>MSG_OUT</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="197">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:187</messageType>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="198">
+          <name>SERVICE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+      </parameters>
+      <roleProvider>true</roleProvider>
+      <port>ORC</port>
+      <isDynamicMode>false</isDynamicMode>
+    </emds.epi.decl.modell.process.ESB__Call>
+    <emds.epi.decl.modell.process.ESB__Call id="199">
+      <processModel reference="1"/>
+      <id>350</id>
+      <displayText>service-call</displayText>
+      <inAssignments id="200">
+        <Assignment id="201">
+          <targetPropertyName>SENDMSGID</targetPropertyName>
+          <sourceExpr id="202">
+            <expression>SENDMSGID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="203">
+          <targetPropertyName>SENDER</targetPropertyName>
+          <sourceExpr id="204">
+            <expression>SENDER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="205">
+          <targetPropertyName>MODE</targetPropertyName>
+          <sourceExpr id="206">
+            <expression>MODE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="207">
+          <targetPropertyName>TIMESTAMP</targetPropertyName>
+          <sourceExpr id="208">
+            <expression>TIMESTAMP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="209">
+          <targetPropertyName>PID</targetPropertyName>
+          <sourceExpr id="210">
+            <expression>PID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="211">
+          <targetPropertyName>STEP</targetPropertyName>
+          <sourceExpr id="212">
+            <expression>STEP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="213">
+          <targetPropertyName>MSG_IN</targetPropertyName>
+          <sourceExpr id="214">
+            <expression>(Message)MSG_IN.makePersistent()</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="215">
+          <targetPropertyName>UUID</targetPropertyName>
+          <sourceExpr id="216">
+            <expression>UUID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="217">
+          <targetPropertyName>CLINIC</targetPropertyName>
+          <sourceExpr id="218">
+            <expression>CLINIC</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="219">
+          <targetPropertyName>EVENT</targetPropertyName>
+          <sourceExpr id="220">
+            <expression>EVENT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="221">
+          <targetPropertyName>RECEIVER</targetPropertyName>
+          <sourceExpr id="222">
+            <expression>RECEIVER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="223">
+          <targetPropertyName>NAME</targetPropertyName>
+          <sourceExpr id="224">
+            <expression>NAME</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </inAssignments>
+      <outAssignments id="225">
+        <Assignment id="226">
+          <targetPropertyName>MSG_OUT</targetPropertyName>
+          <sourceExpr id="227">
+            <expression>MSG_OUT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="228">
+          <targetPropertyName>SERVICE</targetPropertyName>
+          <sourceExpr id="229">
+            <expression>SERVICE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </outAssignments>
+      <xpos>450.0</xpos>
+      <ypos>650.0</ypos>
+      <width>100.0</width>
+      <height>40.0</height>
+      <namespaceContext id="230"/>
+      <intermediateEvents id="231"/>
+      <transactionMode>ACTIVITY_USE_ACTIVE_OR_ATTACH</transactionMode>
+      <retryCount>5</retryCount>
+      <retryDelay id="232">
+        <unit>SECOND</unit>
+        <value>30</value>
+      </retryDelay>
+      <userDefined>false</userDefined>
+      <messageSizeStrategy>0</messageSizeStrategy>
+      <serviceDeclaration reference="60"/>
+      <serviceOperation id="233">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:277</serviceOperation>
+      <parameters id="234">
+        <Property id="235">
+          <name>CLINIC</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="236">
+          <name>EVENT</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="237">
+          <name>MODE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="238">
+          <name>MSG_IN</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="239">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:178</messageType>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="240">
+          <name>NAME</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="241">
+          <name>PID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="242">
+          <name>RECEIVER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="243">
+          <name>SENDER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="244">
+          <name>SENDMSGID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="245">
+          <name>STEP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="246">
+          <name>TIMESTAMP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="247">
+          <name>UUID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="248">
+          <name>MSG_OUT</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="249">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:137</messageType>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="250">
+          <name>SERVICE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+      </parameters>
+      <roleProvider>true</roleProvider>
+      <port>ORC</port>
+      <isDynamicMode>false</isDynamicMode>
+    </emds.epi.decl.modell.process.ESB__Call>
+    <emds.epi.decl.modell.process.ESB__Call id="251">
+      <processModel reference="1"/>
+      <id>351</id>
+      <displayText>service-call</displayText>
+      <inAssignments id="252">
+        <Assignment id="253">
+          <targetPropertyName>SENDMSGID</targetPropertyName>
+          <sourceExpr id="254">
+            <expression>SENDMSGID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="255">
+          <targetPropertyName>SENDER</targetPropertyName>
+          <sourceExpr id="256">
+            <expression>SENDER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="257">
+          <targetPropertyName>MODE</targetPropertyName>
+          <sourceExpr id="258">
+            <expression>MODE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="259">
+          <targetPropertyName>TIMESTAMP</targetPropertyName>
+          <sourceExpr id="260">
+            <expression>TIMESTAMP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="261">
+          <targetPropertyName>PID</targetPropertyName>
+          <sourceExpr id="262">
+            <expression>PID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="263">
+          <targetPropertyName>STEP</targetPropertyName>
+          <sourceExpr id="264">
+            <expression>STEP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="265">
+          <targetPropertyName>MSG_IN</targetPropertyName>
+          <sourceExpr id="266">
+            <expression>(Message)MSG_IN.makePersistent()</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="267">
+          <targetPropertyName>UUID</targetPropertyName>
+          <sourceExpr id="268">
+            <expression>UUID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="269">
+          <targetPropertyName>CLINIC</targetPropertyName>
+          <sourceExpr id="270">
+            <expression>CLINIC</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="271">
+          <targetPropertyName>EVENT</targetPropertyName>
+          <sourceExpr id="272">
+            <expression>EVENT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="273">
+          <targetPropertyName>RECEIVER</targetPropertyName>
+          <sourceExpr id="274">
+            <expression>RECEIVER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="275">
+          <targetPropertyName>NAME</targetPropertyName>
+          <sourceExpr id="276">
+            <expression>NAME</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </inAssignments>
+      <outAssignments id="277">
+        <Assignment id="278">
+          <targetPropertyName>MSG_OUT</targetPropertyName>
+          <sourceExpr id="279">
+            <expression>MSG_OUT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="280">
+          <targetPropertyName>SERVICE</targetPropertyName>
+          <sourceExpr id="281">
+            <expression>SERVICE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </outAssignments>
+      <xpos>520.0</xpos>
+      <ypos>720.0</ypos>
+      <width>100.0</width>
+      <height>40.0</height>
+      <namespaceContext id="282"/>
+      <intermediateEvents id="283"/>
+      <transactionMode>ACTIVITY_USE_ACTIVE_OR_ATTACH</transactionMode>
+      <retryCount>5</retryCount>
+      <retryDelay id="284">
+        <unit>SECOND</unit>
+        <value>30</value>
+      </retryDelay>
+      <userDefined>false</userDefined>
+      <messageSizeStrategy>0</messageSizeStrategy>
+      <serviceDeclaration reference="180"/>
+      <serviceOperation id="285">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:282</serviceOperation>
+      <parameters id="286">
+        <Property id="287">
+          <name>CLINIC</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="288">
+          <name>EVENT</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="289">
+          <name>MODE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="290">
+          <name>MSG_IN</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="291">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:186</messageType>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="292">
+          <name>NAME</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="293">
+          <name>PID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="294">
+          <name>RECEIVER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="295">
+          <name>SENDER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="296">
+          <name>SENDMSGID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="297">
+          <name>STEP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="298">
+          <name>TIMESTAMP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="299">
+          <name>UUID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="300">
+          <name>MSG_OUT</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="301">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:187</messageType>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="302">
+          <name>SERVICE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+      </parameters>
+      <roleProvider>true</roleProvider>
+      <port>ORC</port>
+      <isDynamicMode>false</isDynamicMode>
+    </emds.epi.decl.modell.process.ESB__Call>
+    <emds.epi.decl.modell.process.ESB__Call id="303">
+      <processModel reference="1"/>
+      <id>352</id>
+      <displayText>service-call</displayText>
+      <inAssignments id="304">
+        <Assignment id="305">
+          <targetPropertyName>SENDMSGID</targetPropertyName>
+          <sourceExpr id="306">
+            <expression>SENDMSGID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="307">
+          <targetPropertyName>SENDER</targetPropertyName>
+          <sourceExpr id="308">
+            <expression>SENDER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="309">
+          <targetPropertyName>MODE</targetPropertyName>
+          <sourceExpr id="310">
+            <expression>MODE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="311">
+          <targetPropertyName>PID</targetPropertyName>
+          <sourceExpr id="312">
+            <expression>PID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="313">
+          <targetPropertyName>STEP</targetPropertyName>
+          <sourceExpr id="314">
+            <expression>STEP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="315">
+          <targetPropertyName>CLINIC</targetPropertyName>
+          <sourceExpr id="316">
+            <expression>CLINIC</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="317">
+          <targetPropertyName>EVENT</targetPropertyName>
+          <sourceExpr id="318">
+            <expression>EVENT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="319">
+          <targetPropertyName>NAME</targetPropertyName>
+          <sourceExpr id="320">
+            <expression>NAME</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="321">
+          <targetPropertyName>TIMESTAMP</targetPropertyName>
+          <sourceExpr id="322">
+            <expression>TIMESTAMP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="323">
+          <targetPropertyName>MSG_IN</targetPropertyName>
+          <sourceExpr id="324">
+            <expression>(Message)MSG_IN.makePersistent()</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="325">
+          <targetPropertyName>UUID</targetPropertyName>
+          <sourceExpr id="326">
+            <expression>UUID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="327">
+          <targetPropertyName>RECEIVER</targetPropertyName>
+          <sourceExpr id="328">
+            <expression>RECEIVER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </inAssignments>
+      <outAssignments id="329">
+        <Assignment id="330">
+          <targetPropertyName>MSG_OUT</targetPropertyName>
+          <sourceExpr id="331">
+            <expression>MSG_OUT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="332">
+          <targetPropertyName>SERVICE</targetPropertyName>
+          <sourceExpr id="333">
+            <expression>SERVICE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </outAssignments>
+      <xpos>590.0</xpos>
+      <ypos>790.0</ypos>
+      <width>100.0</width>
+      <height>40.0</height>
+      <namespaceContext id="334"/>
+      <intermediateEvents id="335"/>
+      <transactionMode>ACTIVITY_USE_ACTIVE_OR_ATTACH</transactionMode>
+      <retryCount>5</retryCount>
+      <retryDelay id="336">
+        <unit>SECOND</unit>
+        <value>30</value>
+      </retryDelay>
+      <userDefined>false</userDefined>
+      <messageSizeStrategy>0</messageSizeStrategy>
+      <serviceDeclaration id="337">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:192</serviceDeclaration>
+      <serviceOperation id="338">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:273</serviceOperation>
+      <parameters id="339">
+        <Property id="340">
+          <name>CLINIC</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="341">
+          <name>EVENT</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="342">
+          <name>INIT_SENDER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="343">
+          <name>MODE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="344">
+          <name>MSG_IN</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="345">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:194</messageType>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="346">
+          <name>NAME</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="347">
+          <name>PID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="348">
+          <name>RECEIVER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="349">
+          <name>SENDER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="350">
+          <name>SENDMSGID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="351">
+          <name>STEP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="352">
+          <name>TIMESTAMP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="353">
+          <name>UUID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="354">
+          <name>MSG_OUT</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="355">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:195</messageType>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="356">
+          <name>SERVICE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+      </parameters>
+      <roleProvider>true</roleProvider>
+      <port>ORC</port>
+      <isDynamicMode>false</isDynamicMode>
+    </emds.epi.decl.modell.process.ESB__Call>
+    <emds.epi.decl.modell.process.ESB__Call id="357">
+      <processModel reference="1"/>
+      <id>353</id>
+      <displayText>service-call</displayText>
+      <inAssignments id="358">
+        <Assignment id="359">
+          <targetPropertyName>SENDMSGID</targetPropertyName>
+          <sourceExpr id="360">
+            <expression>SENDMSGID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="361">
+          <targetPropertyName>SENDER</targetPropertyName>
+          <sourceExpr id="362">
+            <expression>SENDER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="363">
+          <targetPropertyName>MODE</targetPropertyName>
+          <sourceExpr id="364">
+            <expression>MODE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="365">
+          <targetPropertyName>TIMESTAMP</targetPropertyName>
+          <sourceExpr id="366">
+            <expression>TIMESTAMP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="367">
+          <targetPropertyName>PID</targetPropertyName>
+          <sourceExpr id="368">
+            <expression>PID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="369">
+          <targetPropertyName>STEP</targetPropertyName>
+          <sourceExpr id="370">
+            <expression>STEP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="371">
+          <targetPropertyName>MSG_IN</targetPropertyName>
+          <sourceExpr id="372">
+            <expression>(Message)MSG_IN.makePersistent()</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="373">
+          <targetPropertyName>UUID</targetPropertyName>
+          <sourceExpr id="374">
+            <expression>UUID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="375">
+          <targetPropertyName>CLINIC</targetPropertyName>
+          <sourceExpr id="376">
+            <expression>CLINIC</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="377">
+          <targetPropertyName>EVENT</targetPropertyName>
+          <sourceExpr id="378">
+            <expression>EVENT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="379">
+          <targetPropertyName>RECEIVER</targetPropertyName>
+          <sourceExpr id="380">
+            <expression>RECEIVER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="381">
+          <targetPropertyName>NAME</targetPropertyName>
+          <sourceExpr id="382">
+            <expression>NAME</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </inAssignments>
+      <outAssignments id="383">
+        <Assignment id="384">
+          <targetPropertyName>MSG_OUT</targetPropertyName>
+          <sourceExpr id="385">
+            <expression>MSG_OUT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="386">
+          <targetPropertyName>SERVICE</targetPropertyName>
+          <sourceExpr id="387">
+            <expression>SERVICE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </outAssignments>
+      <xpos>380.0</xpos>
+      <ypos>560.0</ypos>
+      <width>100.0</width>
+      <height>40.0</height>
+      <namespaceContext id="388"/>
+      <intermediateEvents id="389"/>
+      <transactionMode>ACTIVITY_USE_ACTIVE_OR_ATTACH</transactionMode>
+      <retryCount>5</retryCount>
+      <retryDelay id="390">
+        <unit>SECOND</unit>
+        <value>30</value>
+      </retryDelay>
+      <userDefined>false</userDefined>
+      <messageSizeStrategy>0</messageSizeStrategy>
+      <serviceDeclaration reference="337"/>
+      <serviceOperation id="391">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:193</serviceOperation>
+      <parameters id="392">
+        <Property id="393">
+          <name>CLINIC</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="394">
+          <name>EVENT</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="395">
+          <name>MODE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="396">
+          <name>MSG_IN</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="397">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:194</messageType>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="398">
+          <name>NAME</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="399">
+          <name>PID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="400">
+          <name>RECEIVER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="401">
+          <name>SENDER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="402">
+          <name>SENDMSGID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="403">
+          <name>STEP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="404">
+          <name>TIMESTAMP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="405">
+          <name>UUID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="406">
+          <name>MSG_OUT</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="407">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:195</messageType>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="408">
+          <name>SERVICE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+      </parameters>
+      <roleProvider>true</roleProvider>
+      <port>ORC</port>
+      <isDynamicMode>false</isDynamicMode>
+    </emds.epi.decl.modell.process.ESB__Call>
+    <emds.epi.decl.modell.process.ESB__Call id="409">
+      <processModel reference="1"/>
+      <id>391</id>
+      <displayText>service-call</displayText>
+      <inAssignments id="410">
+        <Assignment id="411">
+          <targetPropertyName>SENDMSGID</targetPropertyName>
+          <sourceExpr id="412">
+            <expression>SENDMSGID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="413">
+          <targetPropertyName>SENDER</targetPropertyName>
+          <sourceExpr id="414">
+            <expression>SENDER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="415">
+          <targetPropertyName>MODE</targetPropertyName>
+          <sourceExpr id="416">
+            <expression>MODE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="417">
+          <targetPropertyName>TIMESTAMP</targetPropertyName>
+          <sourceExpr id="418">
+            <expression>TIMESTAMP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="419">
+          <targetPropertyName>PID</targetPropertyName>
+          <sourceExpr id="420">
+            <expression>PID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="421">
+          <targetPropertyName>STEP</targetPropertyName>
+          <sourceExpr id="422">
+            <expression>STEP</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="423">
+          <targetPropertyName>MSG_IN</targetPropertyName>
+          <sourceExpr id="424">
+            <expression>(Message)MSG_IN.makePersistent()</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="425">
+          <targetPropertyName>UUID</targetPropertyName>
+          <sourceExpr id="426">
+            <expression>UUID</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="427">
+          <targetPropertyName>CLINIC</targetPropertyName>
+          <sourceExpr id="428">
+            <expression>CLINIC</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="429">
+          <targetPropertyName>EVENT</targetPropertyName>
+          <sourceExpr id="430">
+            <expression>EVENT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="431">
+          <targetPropertyName>RECEIVER</targetPropertyName>
+          <sourceExpr id="432">
+            <expression>RECEIVER</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="433">
+          <targetPropertyName>NAME</targetPropertyName>
+          <sourceExpr id="434">
+            <expression>NAME</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </inAssignments>
+      <outAssignments id="435">
+        <Assignment id="436">
+          <targetPropertyName>MSG_OUT</targetPropertyName>
+          <sourceExpr id="437">
+            <expression>MSG_OUT</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+        <Assignment id="438">
+          <targetPropertyName>SERVICE</targetPropertyName>
+          <sourceExpr id="439">
+            <expression>SERVICE</expression>
+            <implementingLanguage>Java</implementingLanguage>
+          </sourceExpr>
+        </Assignment>
+      </outAssignments>
+      <xpos>160.0</xpos>
+      <ypos>330.0</ypos>
+      <width>100.0</width>
+      <height>40.0</height>
+      <namespaceContext id="440"/>
+      <intermediateEvents id="441"/>
+      <transactionMode>ACTIVITY_USE_ACTIVE_OR_ATTACH</transactionMode>
+      <retryCount>5</retryCount>
+      <retryDelay id="442">
+        <unit>SECOND</unit>
+        <value>30</value>
+      </retryDelay>
+      <userDefined>false</userDefined>
+      <messageSizeStrategy>0</messageSizeStrategy>
+      <serviceDeclaration id="443">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:258</serviceDeclaration>
+      <serviceOperation id="444">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceInterface:259</serviceOperation>
+      <parameters id="445">
+        <Property id="446">
+          <name>CLINIC</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="447">
+          <name>EVENT</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="448">
+          <name>MODE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="449">
+          <name>MSG_IN</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="450">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:260</messageType>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="451">
+          <name>NAME</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="452">
+          <name>PID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="453">
+          <name>RECEIVER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="454">
+          <name>SENDER</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="455">
+          <name>SENDMSGID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="456">
+          <name>STEP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="457">
+          <name>TIMESTAMP</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="458">
+          <name>UUID</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>INPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="459">
+          <name>MSG_OUT</name>
+          <type class="ArgumentType">message</type>
+          <messageType id="460">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:260</messageType>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+        <Property id="461">
+          <name>SERVICE</name>
+          <type class="SimpleType">string</type>
+          <usagePattern>OUTPUT</usagePattern>
+          <requiredOnInput>false</requiredOnInput>
+        </Property>
+      </parameters>
+      <roleProvider>true</roleProvider>
+      <isDynamicMode>false</isDynamicMode>
+    </emds.epi.decl.modell.process.ESB__Call>
+    <ExternalSystem id="462">
+      <processModel reference="1"/>
+      <id>402</id>
+      <displayText>svc_INTG_Patfall_Patient_get_v2_in_r1_svc_INTG_Patfall_Patient_get_v2_in_r1</displayText>
+      <inAssignments id="463"/>
+      <outAssignments id="464"/>
+      <xpos>960.0</xpos>
+      <ypos>330.0</ypos>
+      <width>440.0</width>
+      <height>40.0</height>
+      <channelRef id="465">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:258</channelRef>
+      <isInbound>true</isInbound>
+      <isOutbound>true</isOutbound>
+      <role>ServiceEndpoint</role>
+    </ExternalSystem>
+    <ExternalSystem id="466">
+      <processModel reference="1"/>
+      <id>406</id>
+      <displayText>svc_INTG_Patfall_Patient_new_v2_in_r1_svc_INTG_Patfall_Patient_new_v2_in_r1</displayText>
+      <inAssignments id="467"/>
+      <outAssignments id="468"/>
+      <xpos>960.0</xpos>
+      <ypos>420.0</ypos>
+      <width>440.0</width>
+      <height>40.0</height>
+      <channelRef id="469">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:125</channelRef>
+      <isInbound>true</isInbound>
+      <isOutbound>true</isOutbound>
+      <role>ServiceEndpoint</role>
+    </ExternalSystem>
+    <ExternalSystem id="470">
+      <processModel reference="1"/>
+      <id>410</id>
+      <displayText>svc_INTG_Patfall_Patient_update_v2_in_r1_svc_INTG_Patfall_Patient_update_v2_in_r1</displayText>
+      <inAssignments id="471"/>
+      <outAssignments id="472"/>
+      <xpos>960.0</xpos>
+      <ypos>490.0</ypos>
+      <width>480.0</width>
+      <height>40.0</height>
+      <channelRef id="473">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:184</channelRef>
+      <isInbound>true</isInbound>
+      <isOutbound>true</isOutbound>
+      <role>ServiceEndpoint</role>
+    </ExternalSystem>
+    <ExternalSystem id="474">
+      <processModel reference="1"/>
+      <id>414</id>
+      <displayText>svc_INTG_Patfall_Patient_cancel_v2_in_r1_svc_INTG_Patfall_Patient_cancel_v2_in_r1</displayText>
+      <inAssignments id="475"/>
+      <outAssignments id="476"/>
+      <xpos>960.0</xpos>
+      <ypos>560.0</ypos>
+      <width>460.0</width>
+      <height>40.0</height>
+      <channelRef id="477">d9c9a379-5c04-4aff-84b8-b8c774e81656:ServiceDeclaration:192</channelRef>
+      <isInbound>true</isInbound>
+      <isOutbound>true</isOutbound>
+      <role>ServiceEndpoint</role>
+    </ExternalSystem>
+  </processObjects>
+  <annotations id="478">
+    <Annotation id="479">
+      <processModel reference="1"/>
+      <id>110</id>
+      <displayText>Integration-Service (Facade)
+Group_Object_operation
+aufrufen
+</displayText>
+      <xpos>500</xpos>
+      <ypos>130</ypos>
+    </Annotation>
+    <Annotation id="480">
+      <processModel reference="1"/>
+      <id>152</id>
+      <displayText>Welche Operation?</displayText>
+      <associatedDiagramElement class="GatewayExclusiveDecision" reference="19"/>
+      <xpos>160</xpos>
+      <ypos>160</ypos>
+    </Annotation>
+    <Annotation id="481">
+      <processModel reference="1"/>
+      <id>162</id>
+      <displayText>Patient Message aus Dispatch
+empfangen</displayText>
+      <xpos>120</xpos>
+      <ypos>30</ypos>
+    </Annotation>
+    <Annotation id="482">
+      <processModel reference="1"/>
+      <id>185</id>
+      <displayText>Patfall.Patient.new</displayText>
+      <xpos>780</xpos>
+      <ypos>390</ypos>
+    </Annotation>
+    <Annotation id="483">
+      <processModel reference="1"/>
+      <id>266</id>
+      <displayText>Patfall.Patient.query</displayText>
+      <xpos>780</xpos>
+      <ypos>230</ypos>
+    </Annotation>
+    <Annotation id="484">
+      <processModel reference="1"/>
+      <id>280</id>
+      <displayText>Patfall.Patient.update</displayText>
+      <xpos>780</xpos>
+      <ypos>460</ypos>
+    </Annotation>
+    <Annotation id="485">
+      <processModel reference="1"/>
+      <id>349</id>
+      <displayText>Service-Response an
+Dispatcher zurückgeben</displayText>
+      <xpos>110</xpos>
+      <ypos>920</ypos>
+    </Annotation>
+    <Annotation id="486">
+      <processModel reference="1"/>
+      <id>358</id>
+      <displayText>Patfall.Patient.cancel</displayText>
+      <xpos>780</xpos>
+      <ypos>530</ypos>
+    </Annotation>
+    <Annotation id="487">
+      <processModel reference="1"/>
+      <id>372</id>
+      <displayText>Patfall.Patient.new.notify</displayText>
+      <xpos>780</xpos>
+      <ypos>620</ypos>
+    </Annotation>
+    <Annotation id="488">
+      <processModel reference="1"/>
+      <id>381</id>
+      <displayText>Patfall.Patient.update.notify</displayText>
+      <xpos>780</xpos>
+      <ypos>690</ypos>
+    </Annotation>
+    <Annotation id="489">
+      <processModel reference="1"/>
+      <id>390</id>
+      <displayText>Patfall.Patient.cancel.notify</displayText>
+      <xpos>780</xpos>
+      <ypos>760</ypos>
+    </Annotation>
+    <Annotation id="490">
+      <processModel reference="1"/>
+      <id>400</id>
+      <displayText>Patfall.Patient.get</displayText>
+      <xpos>780</xpos>
+      <ypos>300</ypos>
+    </Annotation>
+  </annotations>
+  <edges id="491">
+    <EdgeSequence id="492">
+      <processModel reference="1"/>
+      <id>136</id>
+      <m__arNode id="493">
+        <GatewayExclusiveDecision reference="19"/>
+        <GatewayExclusiveMerge reference="23"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>true</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="494">
+      <processModel reference="1"/>
+      <id>172</id>
+      <m__arNode id="495">
+        <GatewayExclusiveDecision reference="19"/>
+        <emds.epi.decl.modell.process.ESB__Call reference="26"/>
+      </m__arNode>
+      <expression id="496">
+        <expression>operation.equalsIgnoreCase(&quot;Patfall.Patient.new&quot;)</expression>
+        <implementingLanguage>Java</implementingLanguage>
+      </expression>
+      <bentStyle>HV</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="497">
+      <processModel reference="1"/>
+      <id>174</id>
+      <m__arNode id="498">
+        <emds.epi.decl.modell.process.ESB__Call reference="26"/>
+        <GatewayExclusiveMerge reference="23"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="499">
+      <processModel reference="1"/>
+      <id>263</id>
+      <m__arNode id="500">
+        <GatewayExclusiveDecision reference="19"/>
+        <emds.epi.decl.modell.process.ESB__Call reference="83"/>
+      </m__arNode>
+      <expression id="501">
+        <expression>operation.equalsIgnoreCase(&quot;Patfall.Patient.query&quot;)</expression>
+        <implementingLanguage>Java</implementingLanguage>
+      </expression>
+      <bentStyle>HV</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="502">
+      <processModel reference="1"/>
+      <id>265</id>
+      <m__arNode id="503">
+        <emds.epi.decl.modell.process.ESB__Call reference="83"/>
+        <GatewayExclusiveMerge reference="23"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeMessage id="504">
+      <processModel reference="1"/>
+      <id>270</id>
+      <m__arNode id="505">
+        <emds.epi.decl.modell.process.ESB__Call reference="83"/>
+        <ExternalSystem reference="142"/>
+      </m__arNode>
+    </EdgeMessage>
+    <EdgeSequence id="506">
+      <processModel reference="1"/>
+      <id>277</id>
+      <m__arNode id="507">
+        <GatewayExclusiveDecision reference="19"/>
+        <emds.epi.decl.modell.process.ESB__Call reference="146"/>
+      </m__arNode>
+      <expression id="508">
+        <expression>operation.equalsIgnoreCase(&quot;Patfall.Patient.update&quot;)</expression>
+        <implementingLanguage>Java</implementingLanguage>
+      </expression>
+      <bentStyle>HV</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="509">
+      <processModel reference="1"/>
+      <id>279</id>
+      <m__arNode id="510">
+        <emds.epi.decl.modell.process.ESB__Call reference="146"/>
+        <GatewayExclusiveMerge reference="23"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="511">
+      <processModel reference="1"/>
+      <id>346</id>
+      <m__arNode id="512">
+        <GatewayExclusiveMerge reference="23"/>
+        <EventEnd reference="16"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="513">
+      <processModel reference="1"/>
+      <id>348</id>
+      <m__arNode id="514">
+        <EventStart reference="80"/>
+        <GatewayExclusiveDecision reference="19"/>
+      </m__arNode>
+      <bentStyle>HV</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="515">
+      <processModel reference="1"/>
+      <id>361</id>
+      <m__arNode id="516">
+        <GatewayExclusiveDecision reference="19"/>
+        <emds.epi.decl.modell.process.ESB__Call reference="357"/>
+      </m__arNode>
+      <expression id="517">
+        <expression>operation.equalsIgnoreCase(&quot;Patfall.Patient.cancel&quot;)</expression>
+        <implementingLanguage>Java</implementingLanguage>
+      </expression>
+      <bentStyle>HV</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="518">
+      <processModel reference="1"/>
+      <id>367</id>
+      <m__arNode id="519">
+        <GatewayExclusiveDecision reference="19"/>
+        <emds.epi.decl.modell.process.ESB__Call reference="199"/>
+      </m__arNode>
+      <expression id="520">
+        <expression>operation.equalsIgnoreCase(&quot;Patfall.Patient.new.notify&quot;)</expression>
+        <implementingLanguage>Java</implementingLanguage>
+      </expression>
+      <bentStyle>HV</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="521">
+      <processModel reference="1"/>
+      <id>369</id>
+      <m__arNode id="522">
+        <emds.epi.decl.modell.process.ESB__Call reference="357"/>
+        <GatewayExclusiveMerge reference="23"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="523">
+      <processModel reference="1"/>
+      <id>371</id>
+      <m__arNode id="524">
+        <emds.epi.decl.modell.process.ESB__Call reference="199"/>
+        <GatewayExclusiveMerge reference="23"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="525">
+      <processModel reference="1"/>
+      <id>378</id>
+      <m__arNode id="526">
+        <GatewayExclusiveDecision reference="19"/>
+        <emds.epi.decl.modell.process.ESB__Call reference="251"/>
+      </m__arNode>
+      <expression id="527">
+        <expression>operation.equalsIgnoreCase(&quot;Patfall.Patient.update.notify&quot;)</expression>
+        <implementingLanguage>Java</implementingLanguage>
+      </expression>
+      <bentStyle>HV</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="528">
+      <processModel reference="1"/>
+      <id>380</id>
+      <m__arNode id="529">
+        <emds.epi.decl.modell.process.ESB__Call reference="251"/>
+        <GatewayExclusiveMerge reference="23"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="530">
+      <processModel reference="1"/>
+      <id>387</id>
+      <m__arNode id="531">
+        <GatewayExclusiveDecision reference="19"/>
+        <emds.epi.decl.modell.process.ESB__Call reference="303"/>
+      </m__arNode>
+      <expression id="532">
+        <expression>operation.equalsIgnoreCase(&quot;Patfall.Patient.cancel.notify&quot;)</expression>
+        <implementingLanguage>Java</implementingLanguage>
+      </expression>
+      <bentStyle>HV</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="533">
+      <processModel reference="1"/>
+      <id>389</id>
+      <m__arNode id="534">
+        <emds.epi.decl.modell.process.ESB__Call reference="303"/>
+        <GatewayExclusiveMerge reference="23"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="535">
+      <processModel reference="1"/>
+      <id>397</id>
+      <m__arNode id="536">
+        <GatewayExclusiveDecision reference="19"/>
+        <emds.epi.decl.modell.process.ESB__Call reference="409"/>
+      </m__arNode>
+      <expression id="537">
+        <expression>operation.equalsIgnoreCase(&quot;Patfall.Patient.get&quot;)</expression>
+        <implementingLanguage>Java</implementingLanguage>
+      </expression>
+      <bentStyle>HV</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeSequence id="538">
+      <processModel reference="1"/>
+      <id>399</id>
+      <m__arNode id="539">
+        <emds.epi.decl.modell.process.ESB__Call reference="409"/>
+        <GatewayExclusiveMerge reference="23"/>
+      </m__arNode>
+      <bentStyle>VH</bentStyle>
+      <defaultEdge>false</defaultEdge>
+    </EdgeSequence>
+    <EdgeMessage id="540">
+      <processModel reference="1"/>
+      <id>404</id>
+      <m__arNode id="541">
+        <emds.epi.decl.modell.process.ESB__Call reference="409"/>
+        <ExternalSystem reference="462"/>
+      </m__arNode>
+    </EdgeMessage>
+    <EdgeMessage id="542">
+      <processModel reference="1"/>
+      <id>408</id>
+      <m__arNode id="543">
+        <emds.epi.decl.modell.process.ESB__Call reference="26"/>
+        <ExternalSystem reference="466"/>
+      </m__arNode>
+    </EdgeMessage>
+    <EdgeMessage id="544">
+      <processModel reference="1"/>
+      <id>412</id>
+      <m__arNode id="545">
+        <emds.epi.decl.modell.process.ESB__Call reference="146"/>
+        <ExternalSystem reference="470"/>
+      </m__arNode>
+    </EdgeMessage>
+    <EdgeMessage id="546">
+      <processModel reference="1"/>
+      <id>416</id>
+      <m__arNode id="547">
+        <emds.epi.decl.modell.process.ESB__Call reference="357"/>
+        <ExternalSystem reference="474"/>
+      </m__arNode>
+    </EdgeMessage>
+    <EdgeMessage id="548">
+      <processModel reference="1"/>
+      <id>418</id>
+      <m__arNode id="549">
+        <emds.epi.decl.modell.process.ESB__Call reference="199"/>
+        <ExternalSystem reference="466"/>
+      </m__arNode>
+    </EdgeMessage>
+    <EdgeMessage id="550">
+      <processModel reference="1"/>
+      <id>420</id>
+      <m__arNode id="551">
+        <emds.epi.decl.modell.process.ESB__Call reference="251"/>
+        <ExternalSystem reference="470"/>
+      </m__arNode>
+    </EdgeMessage>
+    <EdgeMessage id="552">
+      <processModel reference="1"/>
+      <id>422</id>
+      <m__arNode id="553">
+        <emds.epi.decl.modell.process.ESB__Call reference="303"/>
+        <ExternalSystem reference="474"/>
+      </m__arNode>
+    </EdgeMessage>
+  </edges>
+  <properties class="linked-list" id="554">
+    <Property id="555">
+      <name>CURMSG</name>
+      <type class="ArgumentType">message</type>
+      <usagePattern>LOCAL</usagePattern>
+      <description>current message</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="556">
+      <name>ERROR</name>
+      <type class="ComplexType" id="557">error</type>
+      <usagePattern>LOCAL</usagePattern>
+      <description>Error information object</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="558">
+      <name>USER</name>
+      <type class="ComplexType" id="559">UserInfo</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Authenticated User</description>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property reference="4"/>
+    <Property reference="5"/>
+    <Property reference="6"/>
+    <Property reference="7"/>
+    <Property reference="8"/>
+    <Property reference="9"/>
+    <Property reference="10"/>
+    <Property id="560">
+      <name>TIMESTAMP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="561">
+      <name>MODE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <description>Label für vereinbarte Processing-Varianten</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property reference="11"/>
+    <Property reference="12"/>
+    <Property id="562">
+      <name>MSG_IN</name>
+      <type class="ArgumentType">message</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="563">
+      <name>MSG_OUT</name>
+      <type class="ArgumentType">message</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property reference="13"/>
+    <Property id="564">
+      <name>OBJECT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="565">
+      <name>OBJECT_ID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="566">
+      <name>SYSTEM</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property reference="14"/>
+    <Property id="567">
+      <name>SERVICE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+  </properties>
+  <maxElementId>422</maxElementId>
+</ProcessModel>

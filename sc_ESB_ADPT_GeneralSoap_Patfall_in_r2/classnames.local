@@ -1,0 +1,11 @@
+emds.epi.decl.modell.Group
+emds.epi.impl.landscapedirectory.globalvar.GlobalVariable
+emds.epi.decl.modell.process.ProcessModell
+emds.epi.decl.modell.TestEnvironment
+emds.epi.decl.modell.ServiceDeclaration
+emds.epi.decl.modell.ServiceInterface
+emds.epi.decl.modell.ServiceProvider
+emds.epi.decl.modell.XMLSchema
+emds.epi.impl.landscapedirectory.FileEnvironmentEntry
+emds.mapping.proc.MappingScript
+emds.epi.decl.modell.MessageType

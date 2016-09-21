@@ -1,0 +1,10 @@
+<Group id="1">
+  <name>svc_INTG_Patfall_Patient_query_v2_in_r1_svc_INTG_Patfall_Patient_query_v2_in_r1</name>
+  <description></description>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>138</ID>
+  <revisionNumber>1468225137756</revisionNumber>
+  <groupId>12</groupId>
+  <autoDeleteFlag>true</autoDeleteFlag>
+  <memberTypeName>ServiceDeclaration</memberTypeName>
+</Group>

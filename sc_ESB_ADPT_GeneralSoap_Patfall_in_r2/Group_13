@@ -1,0 +1,9 @@
+<Group id="1">
+  <name>Service Provider</name>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>13</ID>
+  <revisionNumber>1467269797229</revisionNumber>
+  <groupId>-1</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <memberTypeName>ServiceProvider</memberTypeName>
+</Group>

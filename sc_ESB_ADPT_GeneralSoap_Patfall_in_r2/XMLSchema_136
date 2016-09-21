@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+   
+<xsd:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  			xmlns:emds="http://www.emds-ag.de/namespace/" 
+  			xmlns:tns="urn:hirslanden:esb" 
+  			targetNamespace="urn:hirslanden:esb" 
+  			elementFormDefault="qualified" 
+  			emds:messageFormat="XML">
+
+  <xsd:include schemaLocation="IMPL_Patfall_v2.xsd"/>
+
+  <xsd:element name="Request">
+      <xsd:complexType>
+        <xsd:sequence>
+          <xsd:element name="RequestHeader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="MessageId" type="xsd:string"></xsd:element>
+                <xsd:element name="Operation" type="xsd:string"></xsd:element>
+                <xsd:element name="Mode" type="xsd:string"></xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="Payload" minOccurs="0">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="tns:Patfall"></xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="Response" minOccurs="0">
+            <xsd:complexType>
+              <xsd:sequence>
+                 <xsd:element ref="tns:Patfall"></xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:element>
+ </xsd:schema>

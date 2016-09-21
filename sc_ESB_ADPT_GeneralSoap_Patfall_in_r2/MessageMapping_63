@@ -1,0 +1,288 @@
+<emds.mapping.proc.MappingScript id="1">
+  <name>mm_xlate_MSG_IN</name>
+  <description></description>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>63</ID>
+  <revisionNumber>1470393126807</revisionNumber>
+  <groupId>4</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <imports id="2"/>
+  <namespaceContext id="3">
+    <pairs id="4">
+      <emds.mapping.type.NamespaceDeclaration id="5">
+        <prefix>ns1</prefix>
+        <namespaceURI>urn:hirslanden:esb</namespaceURI>
+      </emds.mapping.type.NamespaceDeclaration>
+      <emds.mapping.type.NamespaceDeclaration id="6">
+        <prefix>tns</prefix>
+        <namespaceURI>urn:hirslanden:esb</namespaceURI>
+      </emds.mapping.type.NamespaceDeclaration>
+    </pairs>
+  </namespaceContext>
+  <variables class="linked-list" id="7">
+    <Property id="8">
+      <name>SRC</name>
+      <type class="ArgumentType">message</type>
+      <messageType id="9">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:120</messageType>
+      <usagePattern>INPUT</usagePattern>
+      <description>input message</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="10">
+      <name>MSG</name>
+      <type class="ArgumentType">message</type>
+      <messageType id="11">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:253</messageType>
+      <usagePattern>OUTPUT</usagePattern>
+      <description>result message</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="12">
+      <name>msgSend</name>
+      <type class="SimpleType">boolean</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="13">
+      <name>operation</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="14">
+      <name>mappingError</name>
+      <type class="SimpleType">boolean</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="15">
+      <name>mappingErrText</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="16">
+      <name>STEP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="17">
+      <name>EVENT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="18">
+      <name>TIMESTAMP</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="19">
+      <name>MODE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>IN_OUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="20">
+      <name>SENDER</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="21">
+      <name>SENDMSGID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="22">
+      <name>OBJECT</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="23">
+      <name>FID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>IN_OUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="24">
+      <name>PID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>IN_OUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="25">
+      <name>OBJECT_ID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="26">
+      <name>CLINIC</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="27">
+      <name>SERVICE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>OUTPUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+    <Property id="28">
+      <name>NAME</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>IN_OUT</usagePattern>
+      <requiredOnInput>false</requiredOnInput>
+    </Property>
+  </variables>
+  <scriptText>mappingError = false;
+mappingErrText = &quot;&quot;;
+
+if( PID == null || PID.trim().length() == 0 )
+	PID = asString($SRC/ns1:Payload/tns:Patfall/ns1:Patient/ns1:Patient_ID[1]/ns1:patientId);
+if( FID == null || FID.trim().length() == 0 )
+	FID = asString($SRC/ns1:Payload/tns:Patfall/ns1:Fall/ns1:Fall_ID[1]/ns1:fallId);
+if( NAME == null || NAME.trim().length() == 0 )
+	NAME = asString($SRC/ns1:Payload/tns:Patfall/ns1:Patient/ns1:Patient_Name[1]/ns1:nachname);
+	
+operation = asString($SRC/ns1:RequestHeader/ns1:Operation).trim();
+
+if( operation.equalsIgnoreCase(&quot;Patfall.Patient.new&quot;))
+{
+	STEP = &quot;INIT&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.Patient&quot;;
+	OBJECT_ID = PID;
+	EVENT = &quot;Patfall.PatientAdd&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.Patient.query&quot;))
+{
+	STEP = &quot;QUERY&quot;;
+	msgSend = true;
+	MODE = &quot;SYNC&quot;;  // bei Query immer SYNC
+	OBJECT = &quot;Patfall.Patient&quot;;
+	EVENT = &quot;Patfall.PatientQueryRequest&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.Patient.get&quot;))
+{
+	STEP = &quot;GET&quot;;
+	msgSend = true;
+	MODE = &quot;SYNC&quot;;  // bei Get immer SYNC
+	OBJECT = &quot;Patfall.Patient&quot;;
+	OBJECT_ID = PID;
+	EVENT = &quot;Patfall.PatientGet&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.Patient.update&quot;))
+{
+	STEP = &quot;INIT&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.Patient&quot;;
+	OBJECT_ID = PID;
+	EVENT = &quot;Patfall.PatientInfoUpdate&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.Patient.cancel&quot;))
+{
+	STEP = &quot;INIT&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.Patient&quot;;
+	OBJECT_ID = PID;
+	EVENT = &quot;Patfall.PatientDelete&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.Patient.new.notify&quot;))
+{
+	STEP = &quot;ANGE&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.Patient&quot;;
+	OBJECT_ID = PID;
+	EVENT = &quot;Patfall.PatientAdd&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.Patient.update.notify&quot;))
+{
+	STEP = &quot;ANGE&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.Patient&quot;;
+	OBJECT_ID = PID;
+	EVENT = &quot;Patfall.PatientInfoUpdate&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.Patient.cancel.notify&quot;))
+{
+	STEP = &quot;ANGE&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.Patient&quot;;
+	OBJECT_ID = PID;
+	EVENT = &quot;Patfall.PatientDelete&quot;;
+}
+
+else if( operation.equalsIgnoreCase(&quot;Patfall.FallAmbulant.new&quot;))
+{
+	STEP = &quot;INIT&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.FallAmbulant&quot;;
+	OBJECT_ID = FID;
+	EVENT = &quot;Patfall.PatientRegistration&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.FallAmbulant.update&quot;))
+{
+	STEP = &quot;INIT&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.FallAmbulant&quot;;
+	OBJECT_ID = FID;
+	EVENT = &quot;Patfall.UpdateInfo&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.FallAmbulant.new.notify&quot;))
+{
+	STEP = &quot;ANGE&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.FallAmbulant&quot;;
+	OBJECT_ID = FID;
+	EVENT = &quot;Patfall.PatientRegistration&quot;;
+}
+else if( operation.equalsIgnoreCase(&quot;Patfall.FallAmbulant.update.notify&quot;))
+{
+	STEP = &quot;ANGE&quot;;
+	msgSend = true;
+	OBJECT = &quot;Patfall.FallAmbulant&quot;;
+	OBJECT_ID = FID;
+	EVENT = &quot;Patfall.UpdateInfo&quot;;
+}
+
+else
+{	
+	msgSend = false;
+	mappingError = true;
+	mappingErrText = &quot;Unknown Operation: &quot; + operation;
+	operation = &quot;Unknown&quot;;
+	OBJECT = &quot;Unknown&quot;;
+	EVENT = &quot;Unknown&quot;;
+}
+
+
+// Msg-Standardisierung
+$MSG/. = $SRC/ns1:Payload/ns1:Patfall;
+$MSG/ns1:Header/ns1:timestamp = TIMESTAMP;
+$MSG/ns1:Header/ns1:ereignis = EVENT;
+$MSG/ns1:Header/ns1:senderNachrichtennummer = SENDMSGID;
+String sendSystem = asString($MSG/ns1:Header/ns1:sendendesSystem).trim();
+if( sendSystem.length() == 0 )
+	$MSG/ns1:Header/ns1:sendendesSystem = SENDER;
+String sendMsgID = asString($MSG/ns1:Header/ns1:senderNachrichtennummer).trim();
+if( sendMsgID.length() == 0 )
+	$MSG/ns1:Header/ns1:senderNachrichtennummer = TIMESTAMP.replace(&quot;-&quot;,&quot;&quot;).replace(&quot;.&quot;,&quot;&quot;);
+
+CLINIC = asString($SRC/ns1:Payload/ns1:Patfall/ns1:Header/ns1:sendenderStandort).trim();
+if( CLINIC.length() == 0 )
+{
+	mappingError = true;
+	mappingErrText = &quot;missing Payload/Patfall/Header/SendenderStandort (CLINIC))&quot;;
+	msgSend = false;
+}
+
+SERVICE = operation;</scriptText>
+  <parallelExecution>false</parallelExecution>
+  <useTypedTarget>true</useTypedTarget>
+  <importRevision>0</importRevision>
+</emds.mapping.proc.MappingScript>

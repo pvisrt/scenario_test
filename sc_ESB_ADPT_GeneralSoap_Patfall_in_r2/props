@@ -1,0 +1,8 @@
+#scenario properties
+#Thu Jun 30 08:56:37 CEST 2016
+scenarioType=0
+formatVersion=71
+name=sc_ESB_ADPT_GeneralSoap_Patfall_in_r2
+description=Generischer WebService Patfall IN-Adapter Service 
+UUID=d9c9a379-5c04-4aff-84b8-b8c774e81656
+charset=ISO-8859-1

@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:tns="urn:hirslanden:esb" 
+			xmlns:dataTypes="urn:hirslanden:esb" 
+			targetNamespace="urn:hirslanden:esb" 			
+			elementFormDefault="qualified"
+			version="2.2">	<!-- created: 2016-09-07 by HLE  (version/created immer anpassen!!) -->  
+
+	<!-- DataTypes-Schema -->
+	<xs:include schemaLocation="Patfall_DataTypes_v2.xsd"/>
+
+	<xs:complexType name="Fall">
+		<xs:annotation>
+			<xs:documentation>
+				Fall Version 2.0,
+				ESB Fall-Struktur für  Patfall Service-Gruppe
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Fall_ID" type="tns:Fall_ID" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Fallnummer, ggf. unterschiedlich für verschiedene Systeme
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="fallArt" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Fallart
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="fallTyp" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Falltyp
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Fall_Lokation" type="dataTypes:Patfall_Lokation" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						aktuellste Lokationen zum Fall
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="beginnZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Fall-Beginn
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="endeZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Fall-Ende
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="beginnZeitpunktPlan" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						geplanter Fall-Beginn
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="endeZeitpunktPlan" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						geplantes Fall-Ende
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bemerkung" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Bemerkung zum Fall
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="einweisendeInstanz" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für einweisende Instanz (z.B. Arzt, Justizbehörden)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="eintrittsArt" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Eintrittsart (z.B. Notfall, Begleitperson)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="eintrittsGrund" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Eintrittsgrund (z.B. Unfall, Krankheit)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="eintrittsHerkunft" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Eintrittsherkunft (z.B. Zuhause, Psychatrie)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="entlassendeInstanz" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für entlassende Instanz (z.B. Arzt, Selbst)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="austrittsArt" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Austrittsart
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="austrittsGrund" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Austrittsgrund
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="austrittsZiel" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Austrittsziel (z.B. Zuhause, Psychatrie)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="austrittsZustand" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Zustand bei Austritt
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="kantonsTarif" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Kantonstarif
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="kantonsAbkommen" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für spezifisches Kantonsabkommen
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="einzugsgebiet" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Einzugsgebiet
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="notfallFlag" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Flag für Notfall
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="statistiksperreFlag" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Flag für Statistiksperre
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="stornoKennzeichen" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Kennzeichen für Fallstorno
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="abrechnungsKennzeichen" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Abrechnungskennzeichen fuer den Fall (fakturiert, teilfakturiert)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Fall_Arztzuordnung" type="dataTypes:Patfall_Arztzuordnung" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Arztzuordnung zum Fall
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Fall_Unfalldaten" type="tns:Fall_Unfalldaten" minOccurs="0" maxOccurs="unbounded">
+			</xs:element>
+			<xs:element name="Fall_Versicherungsverhaeltnis" type="tns:Fall_Versicherungsverhaeltnis" minOccurs="0" maxOccurs="unbounded">
+			</xs:element>
+			<xs:element name="Fall_Bewegung" type="tns:Fall_Bewegung" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Bewegungen zum Fall
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Fall_Zusatzinfo" type="dataTypes:Patfall_Zusatzinfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Zusatzinformationen zum Fall (z.B. Pförtnersperre o.ä.)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Fall_ID">
+		<xs:annotation>
+			<xs:documentation>
+				Fall-ID Angaben für ein spezifisches Umsystem
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="fallId" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Fall-ID im jeweiligen Umsystem
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="system" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						System Kenner
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="schema" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Kodierschema/Nummernkreis
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Fall_Unfalldaten">
+		<xs:annotation>
+			<xs:documentation>
+				Unfalldaten
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="unfallart" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Unfallart
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="unfallNr" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Unfallnummer
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="unfallZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+			</xs:element>
+			<xs:element name="unfallOrt" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Ort des Unfalls
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="unfallBemerkung" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Bemerkung zum Unfall
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bgNummer" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						BG-Nummer
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="ausgeuebterBeruf" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Zur Unfallzeit ausgeübter Beruf
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="arbeitgeberReferenz" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Bei Arbeitsunfall relevanter Arbeitgeber: Verweis auf entsprechendes Segment Patient_Arbeitgeber@internalId
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="arbeitsBeginnZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Beginn der Arbeitszeit (bei Arbeitsunfall)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="arbeitsEndeZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Ende der Arbeitszeit (bei Arbeitsunfall)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="behandlungArtUnfall" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Unfallart
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Fall_Versicherungsverhaeltnis">
+		<xs:annotation>
+			<xs:documentation>
+				Versicherungsdaten zum Fall
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rangfolge" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Rangfolge
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="versicherungsTyp" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Versicherungstyp (z.B. GV, UVG)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="kostentraegerName" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Name/Bezeichnung des Kostenträgers
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Kostentraeger_ID" type="dataTypes:Patfall_Identifier" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						IDs des Kostentraegers in Umsystemen
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Kostentraeger_Adresse" type="dataTypes:Patfall_Adresse" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Adresse des Kostenträgers
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Kostentraeger_Telekommunikation" type="dataTypes:Patfall_Telekommunikation" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Telefon, Fax, etc. des Kostenträgers
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="selbstzahlerFlag" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Flag für Selbstzahler
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="gueltigVonZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Beginndatum des Versicherungsverhältnisses
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="gueltigBisZeitpunkt" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Endedatum des Versicherungsverhältnisses
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="vertragsTyp" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Vertragstyp
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="versichertenNr" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Versichertennummer
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="mitgliedsArt" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Art der Mitgliedschaft (z.B. Mitglied, Familienversicherung, Rentner)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="hauptversicherungsFlag" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Flag ob Hauptversicherung
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="tiersPayantFlag" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Tiers Payant Flag
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bemerkung" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Bemerkung zur Versicherung
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="statusKarteErgaenzung" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Ergänzender Statuscode zur Versichertenkarte
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Versichertenkarte" type="dataTypes:Patfall_Versichertenkarte" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Daten der Versichertenkarte
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Fall_Bewegung">
+		<xs:annotation>
+			<xs:documentation>
+				Bewegungsdaten
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="bewegungsNr" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Bewegungsnummer im Fall
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bewegungsStatus" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Bewegungsstatus (IST oder PLAN)
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bewegungsArt" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Bewegungsart
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bewegungsGrund" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Einweisungsart
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="bewegungsZeitpunkt" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Zeitpunkt der Bewegung
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="behandlungskategorie" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Behandlungskategorie
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="patientenklasse" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Code für Patientenklasse
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Bewegung_Lokation" type="dataTypes:Patfall_Lokation" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						Lokationen zur Bewegung
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="Bewegung_Arztzuordnung" type="dataTypes:Patfall_Arztzuordnung" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						zugeordnete Ärzte
+					</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="internalId" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+					interne Persistenz-ID
+				</xs:documentation>
+			</xs:annotation>
+
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>  3{8a8fc2b2-1528-44a9-a565-280a42e5d9c3:XMLSchema}295  W/��

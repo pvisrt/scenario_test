@@ -1,0 +1,16 @@
+<emds.epi.impl.landscapedirectory.FileEnvironmentEntry id="1">
+  <name>ee_ESB_ArchiveRootDir</name>
+  <description>scenario element imported from scLib_ESB_Runtime</description>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>286</ID>
+  <revisionNumber>1470313476721</revisionNumber>
+  <groupId>9</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <entryTypeName>filepath</entryTypeName>
+  <isOriginal>true</isOriginal>
+  <useRuntimeLink>true</useRuntimeLink>
+  <importSource id="2">7980ad13-aea7-4a0f-b10b-71eefc6ffef6:EnvironmentEntry:22</importSource>
+  <importRevision>1438173525483</importRevision>
+  <filepath>/tmp</filepath>
+  <protocoll>LOCAL</protocoll>
+</emds.epi.impl.landscapedirectory.FileEnvironmentEntry>

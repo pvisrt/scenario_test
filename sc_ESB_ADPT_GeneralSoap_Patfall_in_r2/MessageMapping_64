@@ -1,0 +1,73 @@
+<emds.mapping.proc.MappingScript id="1">
+  <name>mm_xlate_MSG_OUT_Response</name>
+  <description></description>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>64</ID>
+  <revisionNumber>1467278935935</revisionNumber>
+  <groupId>4</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <imports id="2"/>
+  <namespaceContext id="3">
+    <pairs id="4">
+      <emds.mapping.type.NamespaceDeclaration id="5">
+        <prefix>ns1</prefix>
+        <namespaceURI>urn:hirslanden:esb</namespaceURI>
+      </emds.mapping.type.NamespaceDeclaration>
+      <emds.mapping.type.NamespaceDeclaration id="6">
+        <prefix>tns</prefix>
+        <namespaceURI>urn:hirslanden:esb</namespaceURI>
+      </emds.mapping.type.NamespaceDeclaration>
+    </pairs>
+  </namespaceContext>
+  <variables class="linked-list" id="7">
+    <Property id="8">
+      <name>SRC</name>
+      <type class="ArgumentType">message</type>
+      <messageType id="9">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:253</messageType>
+      <usagePattern>INPUT</usagePattern>
+      <description>input message</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="10">
+      <name>MSG</name>
+      <type class="ArgumentType">message</type>
+      <messageType id="11">d9c9a379-5c04-4aff-84b8-b8c774e81656:MessageType:120</messageType>
+      <usagePattern>OUTPUT</usagePattern>
+      <description>result message</description>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="12">
+      <name>SENDMSGID</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="13">
+      <name>operation</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+    <Property id="14">
+      <name>MODE</name>
+      <type class="SimpleType">string</type>
+      <usagePattern>INPUT</usagePattern>
+      <requiredOnInput>true</requiredOnInput>
+    </Property>
+  </variables>
+  <scriptText>$MSG/ns1:Header/ns1:MessageId = SENDMSGID;
+$MSG/ns1:Header/ns1:Operation = operation;
+
+if( MODE.equalsIgnoreCase(&quot;SYNC&quot;) )
+{
+	$MSG/ns1:Response/tns:Patfall = $SRC/.;
+}
+else
+{
+	$MSG/ns1:Response = $SRC/.;
+}
+</scriptText>
+  <parallelExecution>false</parallelExecution>
+  <useTypedTarget>false</useTypedTarget>
+  <importRevision>0</importRevision>
+</emds.mapping.proc.MappingScript>

@@ -1,0 +1,15 @@
+<emds.epi.impl.landscapedirectory.globalvar.GlobalVariable id="1">
+  <name>ee_PatientQueryResultFilter</name>
+  <description>optionaler Filtername für Patient.query Results</description>
+  <processSenarioID>d9c9a379-5c04-4aff-84b8-b8c774e81656</processSenarioID>
+  <ID>285</ID>
+  <revisionNumber>1468327628515</revisionNumber>
+  <groupId>9</groupId>
+  <autoDeleteFlag>false</autoDeleteFlag>
+  <entryTypeName>Global variable</entryTypeName>
+  <isOriginal>true</isOriginal>
+  <useRuntimeLink>false</useRuntimeLink>
+  <importRevision>0</importRevision>
+  <value></value>
+  <valueType>0</valueType>
+</emds.epi.impl.landscapedirectory.globalvar.GlobalVariable>
